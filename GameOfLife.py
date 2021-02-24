@@ -6,6 +6,8 @@ Created on Tue Feb 23 17:33:24 2021
 """
 import numpy as np
 import matplotlib.pyplot as plt
+import matplotlib.animation as animation
+from matplotlib.animation import PillowWriter
 import time
 
 
@@ -17,6 +19,7 @@ class GameOfLife():
         self.w = state0.shape[1]
         self.state0 = state0
         self.state = state0
+        self.ims = []
         
     def update(self):
         state1 = np.zeros([self.h,self.w])
@@ -39,13 +42,23 @@ class GameOfLife():
     
     def reset(self):
         self.state = self.state0
+        self.ims = []
         
     def evolve(self,N=20):
+        self.fig = plt.figure()
         for i in range(N):
-            plt.imshow(self.state)
-            plt.pause(0.0001)
+            im = plt.imshow(self.state)
+            self.ims.append([im])
+            #plt.pause(0.0001)
             self.update()
-
+        
+    def gif(self,name):
+        #fig = plt.figure()
+        ani = animation.ArtistAnimation(self.fig,self.ims,interval=50,blit=True,repeat_delay=500)
+        writer = PillowWriter(fps=10)
+        ani.save(name+'.gif',writer = writer)
+        plt.show()
+        
 def cross(h,w):
     cross = np.zeros([h,w])
     cross[int(h/2),:] = 1
@@ -81,21 +94,29 @@ def stripes(h,w,mode = 0):
 #%%
 
 #cross
+print('cross')
 GoL = GameOfLife(cross(16,64))
-GoL.evolve(50)
+GoL.evolve(30)
+GoL.gif('cross')
 
 #random
+print('random')
 GoL = GameOfLife(random(32,32))
-GoL.evolve()
+GoL.evolve(25)
+GoL.gif('random')
 
-#cube
-GoL = GameOfLife(cube(32,32))
-GoL.evolve(5)
+# #cube
+#print('cube')
+# GoL = GameOfLife(cube(32,32))
+# GoL.evolve(5)
     
-#checkerboard
-GoL = GameOfLife(checker(32,32))
-GoL.evolve(5)
+# #checkerboard
+#print('checkerboard')
+# GoL = GameOfLife(checker(32,32))
+# GoL.evolve(5)
 
 #stripes
-GoL = GameOfLife(stripes(32,32,2))
-GoL.evolve(50)
+print('stripes')
+GoL = GameOfLife(stripes(100,100,2))
+GoL.evolve(120)
+GoL.gif('stripes')
