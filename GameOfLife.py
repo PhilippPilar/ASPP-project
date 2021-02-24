@@ -20,8 +20,30 @@ class GameOfLife():
         self.state0 = state0
         self.state = state0
         self.ims = []
+      
         
     def update(self):
+        buf = np.zeros([self.h+2,self.w+2])
+        buf[1:self.h+1,1:self.w+1] = self.state
+        state1 = np.zeros([self.h,self.w])
+        for i in range(1,self.h+1):
+            for j in range(1,self.w+1):
+                v = 0
+                v += np.sum(buf[i+1,j-1:j+2])
+                v += buf[i,j-1] + buf[i,j+1]
+                v += np.sum(buf[i-1,j-1:j+2])
+                
+                if self.state[i-1,j-1] == 0:
+                    if v == 3:
+                        state1[i-1,j-1] = 1
+                else:
+                    if v == 2 or v == 3:
+                        state1[i-1,j-1] = 1
+                    
+        self.state = state1
+        
+        
+    def update0(self):
         state1 = np.zeros([self.h,self.w])
         for i in range(self.h):
             for j in range(self.w):
@@ -89,34 +111,47 @@ def stripes(h,w,mode = 0):
     if mode == 2:
         stripes = stripes + np.flip(stripes,0)
     return stripes
-    
+
+def glider(h,w):
+    glider = np.array([[0,0,1],[1,0,1],[0,1,1]])
+    g = np.zeros([h,w])
+    g[0:3,0:3] = glider
+    return g
 
 #%%
 
 #cross
 print('cross')
-GoL = GameOfLife(cross(16,64))
-GoL.evolve(30)
+GoL = GameOfLife(cross(64,64))
+GoL.evolve(300)
 GoL.gif('cross')
 
 #random
 print('random')
 GoL = GameOfLife(random(32,32))
-GoL.evolve(25)
+GoL.evolve(300)
 GoL.gif('random')
 
-# #cube
-#print('cube')
-# GoL = GameOfLife(cube(32,32))
-# GoL.evolve(5)
+#cube
+print('cube')
+GoL = GameOfLife(cube(32,32))
+GoL.evolve(300)
+GoL.gif('cube')
     
-# #checkerboard
-#print('checkerboard')
-# GoL = GameOfLife(checker(32,32))
-# GoL.evolve(5)
-
+#checkerboard
+print('checkerboard')
+GoL = GameOfLife(checker(32,32))
+GoL.evolve(300)
+GoL.gif('checkerboard')
+#%%
 #stripes
 print('stripes')
 GoL = GameOfLife(stripes(100,100,2))
-GoL.evolve(120)
+GoL.evolve(1000)
 GoL.gif('stripes')
+#%%
+#glider
+print('glider')
+GoL = GameOfLife(glider(16,16))
+GoL.evolve(50)
+GoL.gif('glider')
