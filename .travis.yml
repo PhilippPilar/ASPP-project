@@ -9,7 +9,6 @@ notifications:
 install:
   - pip install numpy
   - pip install pytest
-  - pip install time
   - pip install matplotlib
   
 script:
