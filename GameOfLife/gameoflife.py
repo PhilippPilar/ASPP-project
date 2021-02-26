@@ -26,7 +26,7 @@ class GameOfLife():
     evolve:
         evolve GoL for N steps
     gif:
-        create gif of evoultion
+        create gif of evolution
     
     """
     def __init__(self,state0):
@@ -78,22 +78,33 @@ class GameOfLife():
         self.state = self.state0
         self.ims = []
         
-    def evolve(self,N=20):
+    def evolve(self,N=20,plot='on',name = 'evolve'):
         """
         Evolve the GoL for N steps.
         
         Parameters
         ----------
         N : int
+        plot : str, optional
+            of ... no plot
+            on ... show plot
+            gif .. create gif of evolution
         
         """
+        self.plot = plot
         self.fig = plt.figure()#figsize = (min(self.h/5,50),min(self.w/5,50)))
         for i in range(N):
-            im = plt.imshow(self.state)#,cmap='cividis')
-            plt.axis('off')
-            self.ims.append([im])
-            plt.pause(0.0001)
+            if plot == 'on' or plot == 'gif':
+                im = plt.imshow(self.state)#,cmap='cividis')
+                plt.axis('off')
+                if plot == 'gif':
+                    self.ims.append([im])
+                else:
+                    plt.pause(0.0001)
             self.update()
+        
+        if plot == 'gif':
+            self.gif(name)
         
     def gif(self,name):
         """
@@ -106,7 +117,10 @@ class GameOfLife():
         
         """
         #fig = plt.figure()
-        ani = animation.ArtistAnimation(self.fig,self.ims,interval=50,blit=True,repeat_delay=500)
-        writer = PillowWriter(fps=10)
-        ani.save(name+'.gif',writer = writer)
-        plt.show()
+        if self.plot == 'off':
+            print('To create gif choos plot = on in evolve().')
+        else:
+            ani = animation.ArtistAnimation(self.fig,self.ims,interval=50,blit=True,repeat_delay=500)
+            writer = PillowWriter(fps=10)
+            ani.save(name+'.gif',writer = writer)
+            plt.show()
