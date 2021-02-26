@@ -2,7 +2,7 @@
 """
 Created on Thu Feb 25 22:51:08 2021
 
-@author: Admin
+@author: Philipp Pilar
 """
 
 import numpy as np
@@ -13,7 +13,31 @@ import time
 
 
 class GameOfLife():
+    """
+    Class keeping track of the state(s) of an instance of the game of life.
+    
+    Methods
+    -------
+    
+    update:
+        update state according to rules
+    reset:
+        reset to initial state
+    evolve:
+        evolve GoL for N steps
+    gif:
+        create gif of evoultion
+    
+    """
     def __init__(self,state0):
+        """
+        Initializes a GameOfLife with initial state state0.
+        
+        Parameters
+        ----------
+        state0 : int, 2D-array
+        
+        """
         self.h = state0.shape[0]
         self.w = state0.shape[1]
         self.state0 = state0
@@ -22,6 +46,10 @@ class GameOfLife():
       
         
     def update(self):
+        """
+        Updates the state of the GoL according to the game rules.
+        
+        """
         buf = np.zeros([self.h+2,self.w+2])
         buf[1:self.h+1,1:self.w+1] = self.state
         state1 = np.zeros([self.h,self.w])
@@ -43,19 +71,40 @@ class GameOfLife():
         
     
     def reset(self):
+        """
+        Resets the state of the GoL to its initial state.
+        
+        """
         self.state = self.state0
         self.ims = []
         
     def evolve(self,N=20):
-        self.fig = plt.figure()
+        """
+        Evolve the GoL for N steps.
+        
+        Parameters
+        ----------
+        N : int
+        
+        """
+        self.fig = plt.figure()#figsize = (min(self.h/5,50),min(self.w/5,50)))
         for i in range(N):
             im = plt.imshow(self.state)#,cmap='cividis')
             plt.axis('off')
             self.ims.append([im])
-            #plt.pause(0.0001)
+            plt.pause(0.0001)
             self.update()
         
     def gif(self,name):
+        """
+        Saves a name.gif as visualization of the evolution of the GoL.
+        
+        Parameters
+        ----------
+        name : str
+               name of gif
+        
+        """
         #fig = plt.figure()
         ani = animation.ArtistAnimation(self.fig,self.ims,interval=50,blit=True,repeat_delay=500)
         writer = PillowWriter(fps=10)
