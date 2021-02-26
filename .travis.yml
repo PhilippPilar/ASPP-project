@@ -1,0 +1,16 @@
+language: python
+
+python:
+  - "3.8"
+  
+notifications:
+  email: false
+  
+install:
+  - pip install numpy
+  - pip install pytest
+  - pip install time
+  - pip install matplotlib
+  
+script:
+  - py.test
