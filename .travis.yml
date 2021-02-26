@@ -12,6 +12,6 @@ install:
   - pip install matplotlib
   
 script:
-  - pip install . --user
   - python setup.py sdist
+  - pip install pp-gameoflife
   - py.test
