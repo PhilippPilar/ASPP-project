@@ -1,0 +1,296 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Welcome to Game of Life’s documentation! &#8212; Game of Life v1 documentation</title>
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head><body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          
+
+          <div class="body" role="main">
+            
+  <div class="section" id="welcome-to-game-of-life-s-documentation">
+<h1>Welcome to Game of Life’s documentation!<a class="headerlink" href="#welcome-to-game-of-life-s-documentation" title="Permalink to this headline">¶</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-gameoflife"></span><p>Created on Thu Feb 25 22:51:08 2021</p>
+<p>&#64;author: Philipp Pilar</p>
+<dl class="py class">
+<dt id="gameoflife.GameOfLife">
+<em class="property">class </em><code class="sig-prename descclassname">gameoflife.</code><code class="sig-name descname">GameOfLife</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">state0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gameoflife.GameOfLife" title="Permalink to this definition">¶</a></dt>
+<dd><p>Class keeping track of the state(s) of an instance of the game of life.</p>
+<p class="rubric">Methods</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 26%" />
+<col style="width: 74%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><strong>update:</strong></p></td>
+<td><p>update state according to rules</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>reset:</strong></p></td>
+<td><p>reset to initial state</p></td>
+</tr>
+<tr class="row-odd"><td><p><strong>evolve:</strong></p></td>
+<td><p>evolve GoL for N steps</p></td>
+</tr>
+<tr class="row-even"><td><p><strong>gif:</strong></p></td>
+<td><p>create gif of evoultion</p></td>
+</tr>
+</tbody>
+</table>
+<dl class="py method">
+<dt id="gameoflife.GameOfLife.evolve">
+<code class="sig-name descname">evolve</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">N</span><span class="o">=</span><span class="default_value">20</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gameoflife.GameOfLife.evolve" title="Permalink to this definition">¶</a></dt>
+<dd><p>Evolve the GoL for N steps.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>N</strong><span class="classifier">int</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gameoflife.GameOfLife.gif">
+<code class="sig-name descname">gif</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">name</span></em><span class="sig-paren">)</span><a class="headerlink" href="#gameoflife.GameOfLife.gif" title="Permalink to this definition">¶</a></dt>
+<dd><p>Saves a name.gif as visualization of the evolution of the GoL.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>name</strong><span class="classifier">str</span></dt><dd><p>name of gif</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gameoflife.GameOfLife.reset">
+<code class="sig-name descname">reset</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gameoflife.GameOfLife.reset" title="Permalink to this definition">¶</a></dt>
+<dd><p>Resets the state of the GoL to its initial state.</p>
+</dd></dl>
+
+<dl class="py method">
+<dt id="gameoflife.GameOfLife.update">
+<code class="sig-name descname">update</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#gameoflife.GameOfLife.update" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the state of the GoL according to the game rules.</p>
+</dd></dl>
+
+</dd></dl>
+
+<span class="target" id="module-patterns"></span><dl class="py function">
+<dt id="patterns.checker">
+<code class="sig-prename descclassname">patterns.</code><code class="sig-name descname">checker</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">h</span></em>, <em class="sig-param"><span class="n">w</span></em><span class="sig-paren">)</span><a class="headerlink" href="#patterns.checker" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates checker-board pattern. Grid of size hxw.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>h</strong><span class="classifier">integer</span></dt><dd></dd>
+<dt><strong>w</strong><span class="classifier">integer</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>checker: hxw array</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="patterns.cross">
+<code class="sig-prename descclassname">patterns.</code><code class="sig-name descname">cross</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">h</span></em>, <em class="sig-param"><span class="n">w</span></em><span class="sig-paren">)</span><a class="headerlink" href="#patterns.cross" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates cross-shaped pattern. Grid of size hxw.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>h</strong><span class="classifier">integer</span></dt><dd></dd>
+<dt><strong>w</strong><span class="classifier">integer</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>cross</strong><span class="classifier">hxw array</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="patterns.cube">
+<code class="sig-prename descclassname">patterns.</code><code class="sig-name descname">cube</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">h</span></em>, <em class="sig-param"><span class="n">w</span></em><span class="sig-paren">)</span><a class="headerlink" href="#patterns.cube" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates cube-shaped pattern. Grid of size hxw.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>h</strong><span class="classifier">integer</span></dt><dd></dd>
+<dt><strong>w</strong><span class="classifier">integer</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>cube</strong><span class="classifier">hxw array</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="patterns.glider">
+<code class="sig-prename descclassname">patterns.</code><code class="sig-name descname">glider</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">h</span></em>, <em class="sig-param"><span class="n">w</span></em><span class="sig-paren">)</span><a class="headerlink" href="#patterns.glider" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates a glider on the top left. Grid of size hxw.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>h</strong><span class="classifier">integer</span></dt><dd></dd>
+<dt><strong>w</strong><span class="classifier">integer</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>glider</strong><span class="classifier">hxw array</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="patterns.random">
+<code class="sig-prename descclassname">patterns.</code><code class="sig-name descname">random</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">h</span></em>, <em class="sig-param"><span class="n">w</span></em><span class="sig-paren">)</span><a class="headerlink" href="#patterns.random" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates random pattern. Grid of size hxw.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>h</strong><span class="classifier">integer</span></dt><dd></dd>
+<dt><strong>w</strong><span class="classifier">integer</span></dt><dd></dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>random</strong><span class="classifier">hxw array</span></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py function">
+<dt id="patterns.stripes">
+<code class="sig-prename descclassname">patterns.</code><code class="sig-name descname">stripes</code><span class="sig-paren">(</span><em class="sig-param"><span class="n">h</span></em>, <em class="sig-param"><span class="n">w</span></em>, <em class="sig-param"><span class="n">mode</span><span class="o">=</span><span class="default_value">0</span></em><span class="sig-paren">)</span><a class="headerlink" href="#patterns.stripes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Creates stripes pattern. Grid of size hxw.</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters</dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>h</strong><span class="classifier">int</span></dt><dd></dd>
+<dt><strong>w</strong><span class="classifier">int</span></dt><dd></dd>
+<dt><strong>mode</strong><span class="classifier">int, optional</span></dt><dd><p>0 … 2 stripes from top left to lower right
+1 … 2 stripes from bottom left to upper right
+2 … stripes from mode=0 and mode=1 combined</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Returns</dt>
+<dd class="field-even"><dl class="simple">
+<dt>stripes: hxw array</dt><dd></dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+</div>
+<div class="section" id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</div>
+
+
+          </div>
+          
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="#">Game of Life</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="#">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3 id="searchlabel">Quick search</h3>
+    <div class="searchformwrapper">
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" aria-labelledby="searchlabel" />
+      <input type="submit" value="Go" />
+    </form>
+    </div>
+</div>
+<script>$('#searchbox').show(0);</script>
+
+
+
+
+
+
+
+
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2021, Philipp Pilar.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 3.4.3</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.12</a>
+      
+      |
+      <a href="_sources/index.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

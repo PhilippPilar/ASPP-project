@@ -5,8 +5,8 @@ Created on Tue Feb 23 17:33:24 2021
 @author: Philipp Pilar
 """
 
-import GameOfLife.GameOfLife as GoL
-import GameOfLife.patterns as pt
+import gameoflife.gameoflife as GoL
+import gameoflife.patterns as pt
 
 
 #chosen project: The Game of Life
@@ -14,17 +14,18 @@ import GameOfLife.patterns as pt
 
 #cross
 print('cross')
-G1 = GoL.GameOfLife(pt.cross(64,64))
-G1.evolve(30)
+G1 = GoL.GameOfLife(pt.cross(32,32))
+G1.evolve(100)
 G1.gif('cross')
 
 #%%
 #random
 print('random')
-G2 = GoL.GameOfLife(pt.random(32,32))
-G2.evolve(300)
+G2 = GoL.GameOfLife(pt.random(128,128))
+G2.evolve(700)
 G2.gif('random')
 
+#%%
 #cube
 print('cube')
 G3 = GoL.GameOfLife(pt.cube(32,32))
@@ -46,5 +47,5 @@ G5.gif('stripes')
 #glider
 print('glider')
 G6 = GoL.GameOfLife(pt.glider(16,16))
-G6.evolve(50)
+G6.evolve(55)
 G6.gif('glider')
